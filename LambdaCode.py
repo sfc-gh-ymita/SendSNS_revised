@@ -26,7 +26,7 @@ def lambda_handler(event, context):
             message = {"foo": "bar"} # SNS doesn't use this part for emails, but you MUST HAVE IT or the publish call will error
             client = boto3.client('sns')
             snsResponse = client.publish(
-                TargetArn='arn:aws:sns:<<Your Amazon SNS ARN here>>',
+                TargetArn='<<Your Amazon SNS Topic ARN here>>',
                 Message=json.dumps({'default': json.dumps(message),
                                     'email': emailBody}),
                 Subject=emailSubject,
